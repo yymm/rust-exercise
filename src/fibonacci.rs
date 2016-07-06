@@ -1,7 +1,6 @@
 pub fn fib_match(n: i32) -> i32 {
     match n {
-        0 => 0,
-        1 => 1,
+        0 | 1 => n,
         _ => fib_match(n-2) + fib_match(n-1),
     }
 }
@@ -122,33 +121,33 @@ mod tests_fibonacci {
         assert_eq!(55, fib_repeat(10));
     }
 
-//    #[bench]
-//    fn bench_fib_match(b: &mut Bencher) {
-//        b.iter(|| fib_match(30));
-//    }
-//
-//    #[bench]
-//    fn bench_fib_dp_simple(b: &mut Bencher) {
-//        b.iter(|| fib_dp_simple(1000));
-//    }
-//
-//    #[bench]
-//    fn bench_fib_memo(b: &mut Bencher) {
-//        b.iter(|| fib_memo(1000));
-//    }
-//
-//    #[bench]
-//    fn bench_fib_one(b: &mut Bencher) {
-//        b.iter(|| fib_one(1000));
-//    }
-//
-//    #[bench]
-//    fn bench_fib_repeat(b: &mut Bencher) {
-//        b.iter(|| fib_repeat(1000));
-//    }
-//
-//    #[bench]
-//    fn bench_fib_formulas(b: &mut Bencher) {
-//        b.iter(|| fib_formulas(1000));
-//    }
+    #[bench]
+    fn bench_fib_match(b: &mut Bencher) {
+        b.iter(|| fib_match(30));
+    }
+
+    #[bench]
+    fn bench_fib_dp_simple(b: &mut Bencher) {
+        b.iter(|| fib_dp_simple(1000));
+    }
+
+    #[bench]
+    fn bench_fib_memo(b: &mut Bencher) {
+        b.iter(|| fib_memo(1000));
+    }
+
+    #[bench]
+    fn bench_fib_one(b: &mut Bencher) {
+        b.iter(|| fib_one(1000));
+    }
+
+    #[bench]
+    fn bench_fib_repeat(b: &mut Bencher) {
+        b.iter(|| fib_repeat(1000));
+    }
+
+    #[bench]
+    fn bench_fib_formulas(b: &mut Bencher) {
+        b.iter(|| fib_formulas(1000));
+    }
 }
